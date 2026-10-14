@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vwapsb"
+version = "0.1.0"
+description = "An auditable additive baseline for filling power price curves"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "pandas>=2.2", "openpyxl>=3.1", "tzdata>=2024.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+notebook = ["jupyterlab>=4", "ipywidgets>=8", "plotly>=5", "ipykernel>=6"]
+experiment = ["mlflow>=3.5,<4", "psutil>=6"]
+
+[project.scripts]
+vwapsb = "vwapsb.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+

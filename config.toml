@@ -1,0 +1,66 @@
+# VWAPSb: simple additive curve refill. Paths are relative to this file.
+
+[paths]
+vwap_input = "data/vwaps.xlsx"
+mapping = "mappings/products.csv"
+eex_curves_dir = "../eex_scraper/output/curves/POWER"
+output_dir = "output"
+
+[run]
+# global ignores individual model cells; individual uses nonempty cells.
+configuration_mode = "global"
+
+[model]
+local_enabled = true
+history_enabled = true
+# Maximum distance within the same contract kind, measured in contract steps.
+local_max_steps = 2
+# Unknown volume is allowed only at threshold zero. Originals remain preserved.
+min_volume = 0.0
+# Strictly earlier own dates, in a calendar-day window; one median per date.
+history_window_days = 30
+history_min_days = 3
+# Complete EEX publication window for the same physical delivery contract.
+eex_window = 5
+eex_average = "ewma"
+# Half-life in publication observations, not calendar days.
+eex_halflife = 2.0
+local_min_anchors = 1
+
+[targets]
+tenors = [
+  "D+1", "D+2", "D+3", "WE", "WE+1", "WE+2", "WE+3", "BOW",
+  "W+1", "W+2", "W+3", "W+4", "BOM",
+  "M+1", "M+2", "M+3", "M+4", "M+5", "M+6", "M+7", "M+8", "M+9", "M+10",
+  "Q+1", "Q+2", "Q+3", "Q+4", "Q+5", "Q+6", "Q+7", "Q+8",
+  "Sum+1", "Sum+2", "Sum+3", "Win+1", "Win+2", "Win+3", "Cal+1", "Cal+2", "Cal+3",
+]
+
+[eex]
+# 0 allows same-day publication; -1 excludes it. Calendar-day offset.
+offset_days = 0
+# Maximum age relative to the curve reference date; 0 means unlimited.
+max_stale_days = 7
+
+[conventions]
+day = "calendar"
+weekend_offset = 0
+
+[timezones]
+default = "Europe/Berlin"
+GB = "Europe/London"
+IE = "Europe/Dublin"
+PT = "Europe/Lisbon"
+GR = "Europe/Athens"
+RO = "Europe/Bucharest"
+BG = "Europe/Sofia"
+FI = "Europe/Helsinki"
+
+[vwap_columns]
+reference_date = "reference_date"
+product = "product"
+region = "region"
+unit = "unit"
+tenor = "tenor2"
+vwap = "vwap"
+volume = "total_volume"

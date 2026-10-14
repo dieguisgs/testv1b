@@ -1,0 +1,3 @@
+product,region,unit,use,area,profile,eex_file,hours,timezone,comment,local_enabled,history_enabled,local_max_steps,min_volume,history_window_days,history_min_days,eex_window,eex_average,eex_halflife,local_min_anchors
+EXAMPLE_POWER,Example_North,EUR/MWh,off,EXAMPLE,Base,,Base,Europe/Berlin,Fictional identity. Assign a real EEX file and review before enabling.,,,,,,,,,,
+EXAMPLE_POWER,Example_South,EUR/MWh,off,EXAMPLE,Base,,Base,Europe/Berlin,Example individual settings; blank values inherit global defaults.,true,true,1,0,30,5,7,simple,2,2

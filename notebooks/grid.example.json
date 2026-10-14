@@ -1,0 +1,4 @@
+{
+  "local_max_steps": [1, 2],
+  "eex_average": ["simple", "ewma"]
+}
